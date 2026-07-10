@@ -1,0 +1,26 @@
+PROJETO CORUJA v1.1 - FIRESTORE
+
+O que mudou:
+- O sistema agora conecta no Firebase Firestore.
+- A coleção usada é: jogadores
+- A primeira carga deve ser feita pelo botão: "Migrar base inicial para Firestore".
+- Depois da migração, os jogadores ficam salvos na nuvem.
+
+COMO PUBLICAR
+1) Extraia este ZIP.
+2) Abra o Prompt de Comando na pasta projeto_coruja_v11_firestore.
+3) Rode:
+   firebase use futsubobitoanhanguera
+   firebase deploy
+4) Acesse:
+   https://futsubobitoanhanguera.web.app
+
+PRIMEIRO USO
+1) Abra a aba Jogadores.
+2) Clique em "Migrar base inicial para Firestore".
+3) Aguarde a mensagem de confirmação.
+4) Pronto: os jogadores estarão no Firestore.
+
+IMPORTANTE
+- Execute a migração apenas uma vez. A versão evita duplicidade pelo nome, mas é melhor não repetir sem necessidade.
+- O Firestore precisa estar em modo de teste nesta fase inicial.
