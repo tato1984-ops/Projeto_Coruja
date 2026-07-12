@@ -67,69 +67,7 @@
 <section id="chegadas" class="tab"><h2>Chegadas / Presença no Local</h2><div class="toolbar"><input id="search" placeholder="Buscar jogador..."><button id="markLate">Marcar atraso após sorteio</button></div><div id="playersList"></div></section>
 <section id="sorteio" class="tab"><h2>Sorteio Inteligente</h2><div class="drawPanel"><b id="drawCount">0</b> jogadores presentes • Times de até 6<button id="drawBtn">🎲 Gerar Times</button><button id="copyTeams" class="secondary">📋 Copiar mensagem dos times</button></div><div id="balance"></div><div id="teams"></div><textarea id="teamsText" readonly></textarea></section>
 <section id="jogadores" class="tab"><h2>Jogadores</h2><p class="muted">Build 002 Dashboard: cadastro, validações, backup e sincronização Firestore.</p><div class="toolbar"><input id="playerName" placeholder="Nome do jogador"><select id="playerType"><option>Mensalista</option><option>Avulso</option></select><input id="playerLevel" type="number" min="1" max="10" value="5" placeholder="Nível"><input id="playerPhone" placeholder="Telefone"><button id="addPlayer">➕ Adicionar</button></div><div class="toolbar"><button id="migratePlayers">☁️ Migrar base inicial para Firestore</button><span id="syncStatus" class="muted">Conectando...</span></div><div id="playersTable"></div></section>
-<section id="financeiro" class="tab">
-<h2>💰 Caixa do Sub Óbito</h2>
-<p class="muted">Controle mensal de receitas, locação do espaço e despesas variáveis.</p>
-
-<div class="financeHero">
-  <div>
-    <span class="eyebrow">MÊS DE REFERÊNCIA</span>
-    <h3 id="financeMonth">—</h3>
-  </div>
-  <div class="financeBalanceBox">
-    <span>Saldo previsto</span>
-    <b id="financeBalance">R$ 0,00</b>
-  </div>
-</div>
-
-<div class="dashboardGrid financeGrid">
-  <div class="metricCard primary"><span>📥 Receitas previstas</span><b id="financeRevenue">R$ 0,00</b><small>mensalistas + avulsos presentes</small></div>
-  <div class="metricCard"><span>📤 Despesas totais</span><b id="financeExpenses">R$ 0,00</b><small>quadra + despesas variáveis</small></div>
-  <div class="metricCard"><span>🏟️ Locação do espaço</span><b id="financeRent">R$ 1.000,00</b><small>despesa fixa mensal</small></div>
-</div>
-
-<div class="financeColumns">
-  <div class="financePanel">
-    <h3>Receitas previstas</h3>
-    <div class="financeLine"><span>Mensalistas</span><b id="financeMensalistas">R$ 0,00</b></div>
-    <div class="financeLine"><span>Avulsos presentes</span><b id="financeAvulsos">R$ 0,00</b></div>
-    <div class="financeLine total"><span>Total</span><b id="financeTotal">R$ 0,00</b></div>
-  </div>
-
-  <div class="financePanel">
-    <h3>Registrar despesa</h3>
-    <select id="expenseType">
-      <option>Goleiro de aplicativo</option>
-      <option>Rateio de bola</option>
-      <option>Água</option>
-      <option>Coletes</option>
-      <option>Kit primeiros socorros</option>
-      <option>Churrasco</option>
-      <option>Outros</option>
-    </select>
-    <input id="expenseValue" type="number" min="0" step="0.01" placeholder="Valor da despesa">
-    <input id="expenseNote" placeholder="Observação opcional">
-    <button id="addExpenseBtn">➕ Registrar despesa</button>
-  </div>
-</div>
-
-<div class="financePanel">
-  <div class="panelHeader">
-    <h3>Despesas variáveis do mês</h3>
-    <button id="clearFinanceBtn" class="ghost smallBtn">Limpar mês</button>
-  </div>
-  <div id="financeEntries"></div>
-</div>
-
-<div class="financePanel">
-  <div class="panelHeader">
-    <h3>Prestação de contas</h3>
-    <button id="copyFinanceBtn">📋 Copiar para WhatsApp</button>
-  </div>
-  <textarea id="financeReport" readonly></textarea>
-</div>
-</section>
+<section id="financeiro" class="tab"><h2>Financeiro básico</h2><div class="cards"><div class="card"><b>R$ 65,00</b><span>Mensalista</span></div><div class="card"><b>R$ 20,00</b><span>Avulso</span></div><div class="card"><b>Dia 07</b><span>Vencimento</span></div><div class="card"><b id="financeTotal">0</b><span>Referência mensal</span></div></div><div id="financeSummary"></div></section>
 </main></div>
-<script type="module" src="app.js?v=stable-patch001"></script>
-<script type="module" src="finance.js?v=modular-001"></script>
+<script type="module" src="app.js"></script>
 </body></html>

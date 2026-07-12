@@ -35,36 +35,3 @@
  .metricCard b{font-size:24px}
  .dashboardHero h2{font-size:25px}
 }
-
-
-/* Build 002 — Financeiro Inteligente */
-.financeHero{display:flex;justify-content:space-between;align-items:center;gap:16px;background:linear-gradient(135deg,#102a44,#13233b);border:1px solid #2f80ed44;border-radius:22px;padding:18px;margin:12px 0}
-.financeHero h3{font-size:28px;text-transform:capitalize;margin:5px 0 0}
-.financeBalanceBox{text-align:right}
-.financeBalanceBox span{display:block;color:var(--muted);font-size:13px}
-.financeBalanceBox b{display:block;font-size:30px;margin-top:5px}
-.positiveValue{color:#7ee2a8}
-.negativeValue{color:#ff9b9b}
-.financeGrid{grid-template-columns:repeat(3,1fr)}
-.financeColumns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
-.financePanel{background:rgba(16,29,51,.92);border:1px solid #ffffff12;border-radius:22px;padding:18px;box-shadow:0 12px 30px #0003;margin:12px 0}
-.financePanel h3{margin:0 0 14px}
-.financePanel select,.financePanel input{width:100%;margin:6px 0;background:#07101d;color:#fff;border:1px solid #254365;border-radius:14px;padding:14px}
-.financePanel button{margin-top:8px}
-.financeLine{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid #ffffff10}
-.financeLine.total{font-size:18px;border-bottom:0;padding-top:15px}
-.panelHeader{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.smallBtn{padding:9px 12px;margin:0!important}
-.expenseRow{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #ffffff10}
-.expenseRow small{display:block;color:var(--muted);margin-top:4px}
-.expenseValue{font-weight:900}
-.deleteExpense{background:#5b1d1d;padding:8px 10px;box-shadow:none;margin:0!important}
-@media(max-width:760px){
- .financeColumns,.financeGrid{grid-template-columns:1fr}
- .financeHero{align-items:flex-start;flex-direction:column}
- .financeBalanceBox{text-align:left}
-}
-@media(max-width:500px){
- .expenseRow{grid-template-columns:1fr auto}
- .expenseRow .deleteExpense{grid-column:1/-1;width:100%}
-}
