@@ -1,5 +1,5 @@
 
-const BUILD='004.1.1';
+const BUILD='004.1';
 const ENGINE='coruja-engine-004.1';
 const TEAM_META=[['Azul','🟦'],['Vermelho','🟥'],['Preto','⬛'],['Branco','⬜'],['Verde','🟩']];
 const $=id=>document.getElementById(id);
@@ -60,32 +60,7 @@ function renderDashboard(){
  Object.entries(vals).forEach(([k,v])=>{if($(k))$(k).textContent=v});$('dashConnection').className='connectionBadge '+(firestoreOk?'online':'offline');$('dashProgress').style.width=Math.min(100,p.length/25*100)+'%';$('dashDrawState').textContent=sorteioFeito?'✅ Sorteio realizado':'⏳ Aguardando sorteio';
  $('dashSummary').textContent=p.length?`Hoje temos ${p.length} presentes e ${sizes.length} time(s). ${sizes.some(x=>x<6)?'O último time ficará incompleto.':'Todos os times ficarão completos.'}`:'Aguardando dados da rodada.';$('drawCount').textContent=p.length;
 }
-function renderClock(){
- const agora=new Date();
- const alvo=roundDate();
- alvo.setHours(19,30,0,0);
-
- const diferencaMs=alvo-agora;
-
- if(diferencaMs<=0){
-  $('clock').textContent='🔒 Horário do sorteio encerrado — 19h30';
-  return;
- }
-
- const totalSegundos=Math.floor(diferencaMs/1000);
- const dias=Math.floor(totalSegundos/86400);
- const horas=Math.floor((totalSegundos%86400)/3600);
- const minutos=Math.floor((totalSegundos%3600)/60);
- const segundos=totalSegundos%60;
-
- const relogio=`${String(horas).padStart(2,'0')}:${String(minutos).padStart(2,'0')}:${String(segundos).padStart(2,'0')}`;
-
- if(dias>0){
-  $('clock').textContent=`⏳ Falta${dias>1?'m':''} ${dias} dia${dias>1?'s':''} e ${relogio} para o sorteio`;
- }else{
-  $('clock').textContent=`⏳ Faltam ${relogio} para o sorteio`;
- }
-}
+function renderClock(){const n=new Date(),t=roundDate();t.setHours(19,30,0,0);const d=t-n;if(d<=0){$('clock').textContent='🔒 Horário do sorteio encerrado — 19h30';return}const h=Math.floor(d/3600000),m=Math.floor(d%3600000/60000),s=Math.floor(d%60000/1000);$('clock').textContent=`⏳ Faltam ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')} para o sorteio`}
 function inviteMessage(){return `⚽ *Sub Óbito* 🦉\n\n📅 Próxima rodada: *${roundLabel()}*\n⏰ Chegada até *19h30*\n⚽ Primeiro jogo: *19h35*\n\nConfirme sua presença:\n✅ Vou jogar\n❌ Não vou jogar\n\n⚠️ O sorteio considera apenas quem estiver presente no local.`}
 function renderPlayersList(){
  const q=($('search').value||'').toLowerCase(),groups=[['🟢 Presentes',x=>x.presente],['🟡 Confirmaram',x=>!x.presente&&x.whatsapp==='confirmou'],['⚪ Sem resposta',x=>!x.presente&&x.whatsapp==='sem_resposta'],['🔴 Não vão',x=>!x.presente&&x.whatsapp==='nao']];

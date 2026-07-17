@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gestão Futebol • Sub Óbito Anhanguera</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<header class="appHeader">
+  <div class="brandBlock">
+    <div class="brandMark" aria-hidden="true">🦉⚽</div>
+    <div>
+      <span class="brandKicker">GESTÃO FUTEBOL</span>
+      <h1>Sub Óbito Anhanguera</h1>
+      <p>Organização da rodada, sorteio e financeiro.</p>
+    </div>
+  </div>
+  <div class="headerActions">
+    <span class="versionBadge">v0.3.3.1</span>
+    <button id="resetBtn" class="ghost">Reset local</button>
+  </div>
+</header>
+<nav aria-label="Navegação principal">
+  <button data-tab="rodada" class="active"><span>🏠</span>Rodada</button>
+  <button data-tab="chegadas"><span>✅</span>Chegadas</button>
+  <button data-tab="sorteio"><span>🎲</span>Sorteio</button>
+  <button data-tab="jogadores"><span>👥</span>Jogadores</button>
+  <button data-tab="financeiro"><span>💰</span>Financeiro</button>
+</nav>
+<main>
+<section id="rodada" class="tab active">
+<div class="dashboardHero">
+  <div>
+    <span class="eyebrow">PAINEL DA RODADA</span>
+    <h2>Visão geral</h2>
+    <p id="dashDate" class="dashDate"></p>
+  </div>
+  <div id="dashConnection" class="connectionBadge">
+    <span class="statusDot"></span><span id="dashStatus">Conectando...</span>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="heroTop">
+    <div>
+      <h2 id="roundTitle">Próxima Rodada</h2>
+      <p>Local: Anhanguera • Chegada até 19h30 • 1º jogo 19h35</p>
+    </div>
+    <div id="dashDrawState" class="roundState">⏳ Aguardando sorteio</div>
+  </div>
+  <div id="clock" class="clock"></div>
+  <div class="progressTrack"><div id="dashProgress" class="progressBar"></div></div>
+</div>
+
+<div class="dashboardGrid">
+  <div class="metricCard primary"><span>👥 Presentes</span><b id="dashPresentes">0</b><small>linha + goleiros</small></div>
+  <div class="metricCard"><span>⚽ Jogadores de linha</span><b id="dashLinha">0</b><small>participam do sorteio</small></div>
+  <div class="metricCard"><span>🥅 Goleiros</span><b id="dashGoleiros">0</b><small>fora do sorteio</small></div>
+  <div class="metricCard"><span>🟡 Confirmados</span><b id="dashConfirmados">0</b><small>pelo WhatsApp</small></div>
+  <div class="metricCard"><span>⚽ Times previstos</span><b id="dashTimes">0</b><small>até 6 por time</small></div>
+  <div class="metricCard"><span>📊 Equilíbrio</span><b id="dashEquilibrio">—</b><small>após o sorteio</small></div>
+  <div class="metricCard"><span>💰 Receita prevista</span><b id="dashReceita">R$ 0,00</b><small>mensalistas + avulsos</small></div>
+  <div class="metricCard"><span>⏱️ Atrasos</span><b id="dashAtrasos">0</b><small>após o sorteio</small></div>
+</div>
+
+<div class="summaryPanel">
+  <div class="summaryIcon">🦉</div>
+  <div><span class="eyebrow">RESUMO AUTOMÁTICO</span><p id="dashSummary">Aguardando dados da rodada.</p></div>
+</div>
+
+<div class="cards compactCards">
+  <div class="card"><b id="cConfirmou">0</b><span>Confirmaram</span></div>
+  <div class="card"><b id="cPresente">0</b><span>Presentes</span></div>
+  <div class="card"><b id="cSem">0</b><span>Sem resposta</span></div>
+  <div class="card"><b id="cNao">0</b><span>Não vão</span></div>
+</div>
+
+<div class="actions">
+  <button id="copyInvite">📲 Copiar convite WhatsApp</button>
+  <button id="goChegadas">✅ Confirmar chegadas</button>
+  <button id="drawFromHome">🎲 Gerar times</button>
+  <button id="endRoundBtn" class="danger">🏁 Encerrar rodada</button>
+</div>
+<textarea id="inviteText" readonly></textarea>
+<div class="note">O sorteio considera somente jogadores marcados como <b>presente no local</b>. Quem chegar após o sorteio fica registrado como atraso.</div>
+</section>
+<section id="chegadas" class="tab"><h2>Chegadas / Presença no Local</h2><div class="toolbar"><input id="search" placeholder="Buscar jogador..."><button id="markLate">Marcar atraso após sorteio</button></div><div id="playersList"></div></section>
+<section id="sorteio" class="tab"><h2>Sorteio Inteligente</h2><div class="drawPanel"><b id="drawCount">0</b> presentes • Sorteio apenas com jogadores de linha • Times de até 6<button id="drawBtn">🎲 Gerar Times</button><button id="copyTeams" class="secondary">📋 Copiar mensagem dos times</button></div><div id="balance"></div><div id="teams"></div><textarea id="teamsText" readonly></textarea></section>
+<section id="jogadores" class="tab"><h2>Jogadores</h2><p class="muted">Cadastre, edite e defina quem joga na linha ou no gol.</p><div class="toolbar"><input id="playerName" placeholder="Nome do jogador"><select id="playerType"><option>Mensalista</option><option>Avulso</option></select><select id="playerPosition"><option value="linha">⚽ Linha</option><option value="goleiro">🥅 Goleiro</option></select><input id="playerLevel" type="number" min="1" max="10" value="5" placeholder="Nível"><input id="playerPhone" placeholder="Telefone"><button id="addPlayer">➕ Adicionar</button></div><div class="toolbar"><button id="migratePlayers">☁️ Migrar base inicial para Firestore</button><span id="syncStatus" class="muted">Conectando...</span></div><div id="playersTable"></div></section>
+<section id="financeiro" class="tab">
+<h2>💰 Caixa do Sub Óbito</h2>
+<p class="muted">Controle mensal de receitas, locação do espaço e despesas variáveis.</p>
+
+<div class="financeHero">
+  <div>
+    <span class="eyebrow">MÊS DE REFERÊNCIA</span>
+    <h3 id="financeMonth">—</h3>
+  </div>
+  <div class="financeBalanceBox">
+    <span>Saldo previsto</span>
+    <b id="financeBalance">R$ 0,00</b>
+  </div>
+</div>
+
+<div class="dashboardGrid financeGrid">
+  <div class="metricCard primary"><span>📥 Receitas previstas</span><b id="financeRevenue">R$ 0,00</b><small>mensalistas + avulsos presentes</small></div>
+  <div class="metricCard"><span>📤 Despesas totais</span><b id="financeExpenses">R$ 0,00</b><small>quadra + despesas variáveis</small></div>
+  <div class="metricCard"><span>🏟️ Locação do espaço</span><b id="financeRent">R$ 1.000,00</b><small>despesa fixa mensal</small></div>
+</div>
+
+<div class="financeColumns">
+  <div class="financePanel">
+    <h3>Receitas previstas</h3>
+    <div class="financeLine"><span>Mensalistas</span><b id="financeMensalistas">R$ 0,00</b></div>
+    <div class="financeLine"><span>Avulsos presentes</span><b id="financeAvulsos">R$ 0,00</b></div>
+    <div class="financeLine total"><span>Total</span><b id="financeTotal">R$ 0,00</b></div>
+  </div>
+
+  <div class="financePanel">
+    <h3>Registrar despesa</h3>
+    <select id="expenseType">
+      <option>Goleiro de aplicativo</option>
+      <option>Rateio de bola</option>
+      <option>Água</option>
+      <option>Coletes</option>
+      <option>Kit primeiros socorros</option>
+      <option>Churrasco</option>
+      <option>Outros</option>
+    </select>
+    <input id="expenseValue" type="number" min="0" step="0.01" placeholder="Valor da despesa">
+    <input id="expenseNote" placeholder="Observação opcional">
+    <button id="addExpenseBtn">➕ Registrar despesa</button>
+  </div>
+</div>
+
+<div class="financePanel">
+  <div class="panelHeader">
+    <h3>Despesas variáveis do mês</h3>
+    <button id="clearFinanceBtn" class="ghost smallBtn">Limpar mês</button>
+  </div>
+  <div id="financeEntries"></div>
+</div>
+
+<div class="financePanel">
+  <div class="panelHeader">
+    <h3>Prestação de contas</h3>
+    <button id="copyFinanceBtn">📋 Copiar para WhatsApp</button>
+  </div>
+  <textarea id="financeReport" readonly></textarea>
+  <div id="financeSummary" hidden></div>
+</div>
+</section>
+</main>
+<footer class="appFooter">
+  <span>🦉 Projeto Coruja</span>
+  <span>Build 003.3.1 • Encerramento da Rodada</span>
+</footer>
+</div>
+<script type="module" src="app.js?v=build003-3-1-encerramento-rodada"></script>
+<script type="module" src="finance.js?v=dev-isentos-002"></script>
+</body></html>
