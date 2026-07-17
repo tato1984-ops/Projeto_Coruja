@@ -1,8 +1,8 @@
 const TEAM_META=[['Azul','🟦','#2f80ed'],['Vermelho','🟥','#eb5757'],['Preto','⬛','#111827'],['Branco','⬜','#e9eef7'],['Verde','🟩','#27ae60']];
-const CORUJA_ENGINE_VERSION='1.1.0-build002-patch001-reset-atraso';
+const CORUJA_ENGINE_VERSION='1.2.1-build003-3-interface-profissional';
 const DEFAULT_PLAYERS=[{"id": 1, "nome": "Anderson Sem noção", "telefone": "", "tipo": "Mensalista", "nivel": 5, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 2, "nome": "Beto", "telefone": "", "tipo": "Mensalista", "nivel": 5, "status": "ativo", "whatsapp": "sem_resposta", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 3, "nome": "Carlos Neka", "telefone": "", "tipo": "Mensalista", "nivel": 7, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 4, "nome": "Claudio", "telefone": "", "tipo": "Mensalista", "nivel": 3, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 5, "nome": "Danilo", "telefone": "", "tipo": "Mensalista", "nivel": 5, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 6, "nome": "Filipe", "telefone": "", "tipo": "Mensalista", "nivel": 6, "status": "ativo", "whatsapp": "sem_resposta", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 7, "nome": "Felipe BL", "telefone": "", "tipo": "Mensalista", "nivel": 4, "status": "ativo", "whatsapp": "sem_resposta", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 8, "nome": "Henrique", "telefone": "", "tipo": "Mensalista", "nivel": 8, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 9, "nome": "João", "telefone": "", "tipo": "Mensalista", "nivel": 3, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 10, "nome": "Lucelio", "telefone": "", "tipo": "Mensalista", "nivel": 6, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 11, "nome": "Marquinhos C.Rato", "telefone": "", "tipo": "Mensalista", "nivel": 3, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 12, "nome": "Marcio Salah", "telefone": "", "tipo": "Mensalista", "nivel": 3, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 13, "nome": "Pedro", "telefone": "", "tipo": "Mensalista", "nivel": 7, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 14, "nome": "Rafael Carretilha", "telefone": "", "tipo": "Mensalista", "nivel": 8, "status": "ativo", "whatsapp": "sem_resposta", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 15, "nome": "Renato", "telefone": "", "tipo": "Mensalista", "nivel": 5, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 16, "nome": "Ronaldo", "telefone": "", "tipo": "Mensalista", "nivel": 7, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 17, "nome": "Roque", "telefone": "", "tipo": "Mensalista", "nivel": 4, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 18, "nome": "Sergio Felipe", "telefone": "", "tipo": "Mensalista", "nivel": 6, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 19, "nome": "Sergio Garro", "telefone": "", "tipo": "Mensalista", "nivel": 8, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 20, "nome": "Sonata", "telefone": "", "tipo": "Mensalista", "nivel": 6, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 21, "nome": "Thiego", "telefone": "", "tipo": "Mensalista", "nivel": 4, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 22, "nome": "Vini", "telefone": "", "tipo": "Mensalista", "nivel": 8, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 23, "nome": "Willi", "telefone": "", "tipo": "Mensalista", "nivel": 4, "status": "ativo", "whatsapp": "confirmou", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 24, "nome": "Guilherme", "telefone": "", "tipo": "Avulso", "nivel": 8, "status": "ativo", "whatsapp": "sem_resposta", "presente": false, "atraso": false, "pagamento": "pendente"}, {"id": 25, "nome": "Wilker", "telefone": "", "tipo": "Avulso", "nivel": 7, "status": "ativo", "whatsapp": "sem_resposta", "presente": false, "atraso": false, "pagamento": "pendente"}];
 
-let players=[], teams=[], sorteioFeito=false, unsubscribePlayers=null, firestoreOk=false;
+let players=[], teams=[], sorteioFeito=false, sorteioAt=null, unsubscribePlayers=null, firestoreOk=false;
 const $=id=>document.getElementById(id);
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
@@ -39,7 +39,7 @@ function normalizePlayer(p){
  return {
   nome: p.nome || '', telefone: p.telefone || '', tipo: p.tipo || 'Mensalista', nivel: Number(p.nivel || p.nivelTecnico || 5),
   status: p.status || 'ativo', whatsapp: p.whatsapp || 'sem_resposta', presente: !!p.presente, atraso: !!p.atraso,
-  pagamento: p.pagamento || 'pendente', jogadorId: Number(p.jogadorId || p.id || 0), updatedAt: serverTimestamp()
+  pagamento: p.pagamento || 'pendente', posicao: p.posicao || 'linha', jogadorId: Number(p.jogadorId || p.id || 0), updatedAt: serverTimestamp()
  };
 }
 function getRoundDate(baseDate=new Date()){
@@ -79,25 +79,53 @@ async function init(){
   const s=localStorage.getItem('coruja_sorteio');
   if(s){
    const o=JSON.parse(s);
-   if(o.engineVersion===CORUJA_ENGINE_VERSION && o.roundKey===getRoundKey()){
+   if(
+    o.engineVersion===CORUJA_ENGINE_VERSION &&
+    o.roundKey===getRoundKey() &&
+    o.sorteioAt
+   ){
     teams=o.teams||[];
     sorteioFeito=!!o.sorteioFeito;
+    sorteioAt=o.sorteioAt;
    }else{
     localStorage.removeItem('coruja_sorteio');
     teams=[];
     sorteioFeito=false;
+    sorteioAt=null;
    }
   }
   listenPlayers();
   setInterval(renderClock,1000);
  }catch(e){ console.error(e); alert('Erro ao iniciar o Projeto Coruja.'); }
 }
+async function clearStaleAtrasos(){
+ if(sorteioFeito && sorteioAt) return;
+
+ const stale=players.filter(player=>player.atraso===true);
+ if(!stale.length) return;
+
+ try{
+  await Promise.all(
+   stale.map(player=>{
+    player.atraso=false;
+    if(typeof player.id==='string' && firestoreOk){
+     return updateDoc(doc(db,'jogadores',player.id),{atraso:false,updatedAt:serverTimestamp()});
+    }
+    return Promise.resolve();
+   })
+  );
+ }catch(error){
+  console.error('Erro ao limpar atrasos antigos:',error);
+ }
+}
+
 function listenPlayers(){
  try{
   const q=query(jogadoresRef, orderBy('jogadorId','asc'));
-  unsubscribePlayers=onSnapshot(q, snap=>{
+  unsubscribePlayers=onSnapshot(q, async snap=>{
    firestoreOk=true;
    players=snap.docs.map((d,i)=>({id:d.id, ...d.data(), jogadorId:d.data().jogadorId || i+1}));
+   await clearStaleAtrasos();
    if(players.length===0){ setStatus('Firestore conectado. Clique em “Migrar base inicial”.'); }
    else { setStatus(`Firestore conectado: ${players.length} jogadores sincronizados.`); }
    renderAll();
@@ -130,6 +158,7 @@ async function migrateInitialPlayers(){
 async function savePlayer(p){
  if(typeof p.id==='string' && firestoreOk){ await updateDoc(doc(db,'jogadores',p.id), {...normalizePlayer(p), jogadorId:p.jogadorId||0}); }
  else { localStorage.setItem('coruja_players',JSON.stringify(players)); renderAll(); }
+ resetDrawIfNoPresentPlayers();
 }
 async function removePlayer(id){
  if(!confirm('Excluir este jogador?')) return;
@@ -148,11 +177,11 @@ async function addPlayerFromForm(){
  const nome=$('playerName').value.trim(); if(!nome){alert('Informe o nome do jogador.'); return;}
  const nivel=Math.max(1,Math.min(10,Number($('playerLevel').value||5)));
  const jogadorId=players.reduce((m,p)=>Math.max(m,Number(p.jogadorId||0)),0)+1;
- const p={nome, tipo:$('playerType').value, nivel, telefone:$('playerPhone').value.trim(), status:'ativo', whatsapp:'sem_resposta', presente:false, atraso:false, pagamento:'pendente', jogadorId, createdAt:serverTimestamp(), updatedAt:serverTimestamp()};
+ const p={nome, tipo:$('playerType').value, posicao:$('playerPosition').value, nivel, telefone:$('playerPhone').value.trim(), status:'ativo', whatsapp:'sem_resposta', presente:false, atraso:false, pagamento:'pendente', jogadorId, createdAt:serverTimestamp(), updatedAt:serverTimestamp()};
  if(firestoreOk) await addDoc(jogadoresRef,p); else {players.push({...p,id:jogadorId}); localStorage.setItem('coruja_players',JSON.stringify(players)); renderAll();}
- $('playerName').value=''; $('playerPhone').value=''; $('playerLevel').value=5;
+ $('playerName').value=''; $('playerPhone').value=''; $('playerLevel').value=5; $('playerPosition').value='linha';
 }
-function saveSorteio(){localStorage.setItem('coruja_sorteio',JSON.stringify({teams,sorteioFeito,engineVersion:CORUJA_ENGINE_VERSION,roundKey:getRoundKey()})); renderAll()}
+function saveSorteio(){localStorage.setItem('coruja_sorteio',JSON.stringify({teams,sorteioFeito,sorteioAt,engineVersion:CORUJA_ENGINE_VERSION,roundKey:getRoundKey()})); renderAll()}
 function showTab(id){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));$(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));renderAll()}
 function stats(){return{confirmou:players.filter(p=>p.whatsapp==='confirmou').length,presente:players.filter(p=>p.presente).length,sem:players.filter(p=>p.whatsapp==='sem_resposta').length,nao:players.filter(p=>p.whatsapp==='nao').length}}
 function renderAll(){
@@ -173,17 +202,21 @@ function renderAll(){
 function renderDashboard(){
  const ativos=players.filter(p=>(p.status||'ativo')==='ativo');
  const presentes=ativos.filter(p=>p.presente).length;
+ const jogadoresLinha=ativos.filter(p=>p.presente&&(p.posicao||'linha')!=='goleiro').length;
+ const goleiros=ativos.filter(p=>p.presente&&(p.posicao||'linha')==='goleiro').length;
  const confirmados=ativos.filter(p=>p.whatsapp==='confirmou').length;
- const sizes=getTeamSizes(presentes);
+ const sizes=getTeamSizes(jogadoresLinha);
  const times=sizes.length;
  const mensalistas=ativos.filter(p=>(p.tipo||'').toLowerCase().includes('mensal')).length;
  const avulsosPresentes=ativos.filter(p=>(p.tipo||'').toLowerCase().includes('avul')&&p.presente).length;
  const receita=mensalistas*65+avulsosPresentes*20;
- const atrasos=sorteioFeito?ativos.filter(p=>p.presente&&p.atraso).length:0;
+ const atrasos=sorteioFeito&&sorteioAt?ativos.filter(p=>p.presente&&p.atraso).length:0;
  const equilibrio=teams.length?`${balancePct(teams)}%`:'Aguardando sorteio';
 
  const values={
   dashPresentes:presentes,
+  dashLinha:jogadoresLinha,
+  dashGoleiros:goleiros,
   dashConfirmados:confirmados,
   dashTimes:times,
   dashReceita:`R$ ${receita.toFixed(2).replace('.',',')}`,
@@ -209,7 +242,7 @@ function renderDashboard(){
    summary.textContent='Aguardando dados da rodada.';
   }else{
    const ultimo=sizes.find(size=>size<6);
-   let msg=`Hoje temos ${presentes} jogadores presentes. Serão formados ${times} times. `;
+   let msg=`Hoje temos ${presentes} presentes: ${jogadoresLinha} jogadores de linha e ${goleiros} goleiro${goleiros===1?'':'s'}. Serão formados ${times} times com os jogadores de linha. `;
    msg+=ultimo?`O último time começará com ${ultimo} jogadores. `:'Todos os times ficarão completos. ';
    if(times>=2) msg+='Azul e Vermelho começam jogando.';
    summary.textContent=msg;
@@ -223,10 +256,27 @@ function renderDashboard(){
  }
 }
 
+function resetDrawIfNoPresentPlayers(){
+ const hasPresent=players.some(player=>player.presente && (player.status||'ativo')==='ativo');
+ if(!hasPresent && (sorteioFeito || sorteioAt || teams.length)){
+  sorteioFeito=false;
+  sorteioAt=null;
+  teams=[];
+  localStorage.removeItem('coruja_sorteio');
+ }
+}
+
 function renderClock(){
  const now=new Date();
  const target=getRoundTarget(now);
  const diff=target-now;
+ const sameDay=now.getFullYear()===target.getFullYear() && now.getMonth()===target.getMonth() && now.getDate()===target.getDate();
+ const title=$('roundTitle');
+ const date=$('dashDate');
+
+ if(title) title.textContent=sameDay?'Rodada de Hoje':'Próxima Rodada';
+ if(date) date.textContent=new Intl.DateTimeFormat('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'}).format(target);
+
  let txt='';
 
  if(diff>0){
@@ -248,15 +298,55 @@ function renderClock(){
 }
 function inviteMessage(){const rodada=getRoundLabel(); return `⚽ *Sub Óbito Anhanguera* 🦉\n\n📅 Próxima rodada: *${rodada}*\n\nTem jogo no grupo *Inimigos do Gol - Cat. subobito*!\n\n📍 Local: Anhanguera\n⏰ Chegada até *19h30*\n⚽ Primeiro jogo: *19h35*\n\nConfirme sua presença:\n✅ Vou jogar\n❌ Não vou jogar\n\n⚠️ O sorteio será feito somente com os jogadores presentes no local até *19h30*.\n\n*Mais tempo jogando. Menos tempo organizando.*`}
 function renderPlayersList(){let q=($('search')?.value||'').toLowerCase(); let groups=[['🟢 Presentes no local',p=>p.presente],['🟡 Confirmaram, mas não chegaram',p=>!p.presente&&p.whatsapp==='confirmou'],['⚪ Sem resposta',p=>!p.presente&&p.whatsapp==='sem_resposta'],['🔴 Não vão / excluídos',p=>!p.presente&&p.whatsapp==='nao']]; let html=''; groups.forEach(([title,fn])=>{let arr=players.filter(p=>(p.status||'ativo')==='ativo'&&fn(p)&&(p.nome||'').toLowerCase().includes(q)); if(!arr.length)return; html+=`<h3>${title} (${arr.length})</h3>`+arr.map(playerCard).join('')}); $('playersList').innerHTML=html||'<p class="muted">Nenhum jogador encontrado.</p>'; bindPlayerButtons()}
-function playerCard(p){let atraso=sorteioFeito&&p.atraso?'<span class="chip warn">Atraso</span>':''; return `<div class="player"><div><b>${p.nome}</b><br><small>Nível ${p.nivel} • ${p.tipo}</small><div class="chips"><span class="chip ${p.presente?'ok':''}">${p.presente?'Presente':'Não presente'}</span><span class="chip">${labelWhats(p.whatsapp)}</span>${atraso}</div></div><div class="playerActions"><button data-act="present" data-id="${p.id}">✅ Presente</button><button data-act="confirmou" data-id="${p.id}">👍 Confirmou</button><button data-act="no" data-id="${p.id}">❌ Não vai</button></div></div>`}
+function playerCard(p){let atraso=sorteioFeito&&sorteioAt&&p.presente&&p.atraso?'<span class="chip warn">Atraso</span>':''; return `<div class="player"><div><b>${p.nome}</b><br><small>${(p.posicao||'linha')==='goleiro'?'🥅 Goleiro':'⚽ Linha'} • Nível ${p.nivel} • ${p.tipo}</small><div class="chips"><span class="chip ${p.presente?'ok':''}">${p.presente?'Presente':'Não presente'}</span><span class="chip">${labelWhats(p.whatsapp)}</span>${atraso}</div></div><div class="playerActions"><button data-act="present" data-id="${p.id}">✅ Presente</button><button data-act="confirmou" data-id="${p.id}">👍 Confirmou</button><button data-act="no" data-id="${p.id}">❌ Não vai</button></div></div>`}
 function labelWhats(w){return w==='confirmou'?'Confirmou WhatsApp':w==='nao'?'Não vai':'Sem resposta'}
-function bindPlayerButtons(){document.querySelectorAll('[data-act]').forEach(b=>b.onclick=async()=>{let p=players.find(x=>String(x.id)===String(b.dataset.id)); if(!p)return; if(b.dataset.act==='present'){p.presente=true;p.whatsapp='confirmou';p.atraso=!!sorteioFeito} if(b.dataset.act==='confirmou'){p.whatsapp='confirmou';p.presente=false;p.atraso=false} if(b.dataset.act==='no'){p.whatsapp='nao';p.presente=false;p.atraso=false} await savePlayer(p)})}
-function renderPlayersTable(){let html='<div class="table"><div class="row header"><span>Nº</span><span>Nome</span><span>Tipo</span><span>Nível</span><span>Ações</span></div>'; players.forEach(p=>html+=`<div class="row"><span>${p.jogadorId||''}</span><span><input class="editName" data-id="${p.id}" value="${escapeHtml(p.nome||'')}"></span><span><select class="editType" data-id="${p.id}"><option ${p.tipo==='Mensalista'?'selected':''}>Mensalista</option><option ${p.tipo==='Avulso'?'selected':''}>Avulso</option></select></span><span><input class="editLevel" data-id="${p.id}" type="number" min="1" max="10" value="${p.nivel||5}"></span><span><button class="saveEdit" data-id="${p.id}">Salvar</button><button class="deletePlayer" data-id="${p.id}">Excluir</button></span></div>`); html+='</div>'; $('playersTable').innerHTML=html; bindTableEdit()}
-function bindTableEdit(){document.querySelectorAll('.saveEdit').forEach(b=>b.onclick=async()=>{let id=b.dataset.id,p=players.find(x=>String(x.id)===String(id)); if(!p)return; p.nome=document.querySelector(`.editName[data-id="${id}"]`).value.trim(); p.tipo=document.querySelector(`.editType[data-id="${id}"]`).value; p.nivel=Math.max(1,Math.min(10,Number(document.querySelector(`.editLevel[data-id="${id}"]`).value||5))); await savePlayer(p); alert('Jogador salvo.');}); document.querySelectorAll('.deletePlayer').forEach(b=>b.onclick=()=>removePlayer(b.dataset.id));}
+function invalidateCurrentDraw(){
+ if(sorteioFeito || sorteioAt || teams.length){
+  sorteioFeito=false;
+  sorteioAt=null;
+  teams=[];
+  localStorage.removeItem('coruja_sorteio');
+ }
+}
+
+function bindPlayerButtons(){
+ document.querySelectorAll('[data-act]').forEach(button=>{
+  button.onclick=async()=>{
+   const player=players.find(item=>String(item.id)===String(button.dataset.id));
+   if(!player) return;
+
+   if(button.dataset.act==='present'){
+    player.presente=true;
+    player.whatsapp='confirmou';
+    player.atraso=Boolean(sorteioFeito && sorteioAt);
+   }
+
+   if(button.dataset.act==='confirmou'){
+    player.whatsapp='confirmou';
+    player.presente=false;
+    player.atraso=false;
+    invalidateCurrentDraw();
+   }
+
+   if(button.dataset.act==='no'){
+    player.whatsapp='nao';
+    player.presente=false;
+    player.atraso=false;
+    invalidateCurrentDraw();
+   }
+
+   await savePlayer(player);
+  };
+ });
+}
+function renderPlayersTable(){let html='<div class="table"><div class="row header"><span>Nº</span><span>Nome</span><span>Tipo</span><span>Posição</span><span>Nível</span><span>Ações</span></div>'; players.forEach(p=>html+=`<div class="row"><span>${p.jogadorId||''}</span><span><input class="editName" data-id="${p.id}" value="${escapeHtml(p.nome||'')}"></span><span><select class="editType" data-id="${p.id}"><option ${p.tipo==='Mensalista'?'selected':''}>Mensalista</option><option ${p.tipo==='Avulso'?'selected':''}>Avulso</option></select></span><span><select class="editPosition" data-id="${p.id}"><option value="linha" ${(p.posicao||'linha')==='linha'?'selected':''}>Linha</option><option value="goleiro" ${(p.posicao||'linha')==='goleiro'?'selected':''}>Goleiro</option></select></span><span><input class="editLevel" data-id="${p.id}" type="number" min="1" max="10" value="${p.nivel||5}"></span><span><button class="saveEdit" data-id="${p.id}">Salvar</button><button class="deletePlayer" data-id="${p.id}">Excluir</button></span></div>`); html+='</div>'; $('playersTable').innerHTML=html; bindTableEdit()}
+function bindTableEdit(){document.querySelectorAll('.saveEdit').forEach(b=>b.onclick=async()=>{let id=b.dataset.id,p=players.find(x=>String(x.id)===String(id)); if(!p)return; p.nome=document.querySelector(`.editName[data-id="${id}"]`).value.trim(); p.tipo=document.querySelector(`.editType[data-id="${id}"]`).value; p.posicao=document.querySelector(`.editPosition[data-id="${id}"]`).value; p.nivel=Math.max(1,Math.min(10,Number(document.querySelector(`.editLevel[data-id="${id}"]`).value||5))); await savePlayer(p); alert('Jogador salvo.');}); document.querySelectorAll('.deletePlayer').forEach(b=>b.onclick=()=>removePlayer(b.dataset.id));}
 function drawTeams(){
- const presentes=players.filter(p=>p.presente && (p.status||'ativo')==='ativo');
- if(!presentes.length){alert('Marque os jogadores presentes antes do sorteio.'); return}
- if(presentes.length>25){alert('Limite oficial do Sub Óbito: até 25 jogadores presentes. Desmarque os excedentes antes do sorteio.'); return}
+ const todosPresentes=players.filter(p=>p.presente && (p.status||'ativo')==='ativo');
+ const presentes=todosPresentes.filter(p=>(p.posicao||'linha')!=='goleiro');
+ if(!todosPresentes.length){alert('Marque os jogadores presentes antes do sorteio.'); return}
+ if(!presentes.length){alert('Não há jogadores de linha presentes para sortear. Os goleiros ficam separados.'); return}
+ if(presentes.length>25){alert('Limite oficial do Sub Óbito: até 25 jogadores de linha presentes. Desmarque os excedentes antes do sorteio.'); return}
 
  const sizes=getTeamSizes(presentes.length);
  const incompleteIndex=sizes.findIndex(size=>size<6);
@@ -298,6 +388,7 @@ function drawTeams(){
 
  teams=candidate;
  sorteioFeito=true;
+ sorteioAt=new Date().toISOString();
  saveSorteio();
 }
 
@@ -416,8 +507,8 @@ function balancePct(candidate){
  const range=Math.max(...sums)-Math.min(...sums);
  return Math.max(70,Math.min(100,Math.round((100-range*2.5)*10)/10));
 }
-function renderTeams(){if(!teams.length){$('teams').innerHTML='<p class="muted">Nenhum sorteio gerado ainda.</p>';$('teamsText').value='';$('balance').innerHTML='';return} let pct=balancePct(teams); $('balance').innerHTML=`<div class="balance">🦉 Índice de equilíbrio: ${pct}% ${pct>=95?'⭐⭐⭐⭐⭐':pct>=90?'⭐⭐⭐⭐':'⭐⭐⭐'}</div>`; let html=''; teams.forEach((t,i)=>{let m=TEAM_META[i]; html+=`<div class="team"><h3>${m[1]} Time ${m[0]} ${i<2?'— começa jogando':'— próximo'}</h3><ul>${t.map(p=>`<li>${p.nome} <small>(nível ${p.nivel})</small></li>`).join('')}</ul><div class="sum">Soma ${sum(t)} • Média ${avg(t).toFixed(1)}</div></div>`}); $('teams').innerHTML=html; $('teamsText').value=teamsMessage(pct)}
-function teamsMessage(pct){let lines=[`⚽ *Sub Óbito Anhanguera* 🦉`,`📅 Times da rodada`,`👥 Presentes: ${players.filter(p=>p.presente).length}`,`📊 Equilíbrio: ${pct}%`,``]; teams.forEach((t,i)=>{let m=TEAM_META[i]; lines.push(`${m[1]} *TIME ${m[0].toUpperCase()}* ${i<2?'— começa jogando':'— próximo'}`); t.forEach(p=>lines.push(`- ${p.nome}`)); lines.push('')}); lines.push('⚽ Primeiro jogo: 🟦 Azul x 🟥 Vermelho'); lines.push('Boa resenha e sem choro! 😂'); return lines.join('\n')}
+function renderTeams(){if(!teams.length){$('teams').innerHTML='<p class="muted">Nenhum sorteio gerado ainda.</p>';$('teamsText').value='';$('balance').innerHTML='';return} let pct=balancePct(teams); $('balance').innerHTML=`<div class="balance">🦉 Índice de equilíbrio: ${pct}% ${pct>=95?'⭐⭐⭐⭐⭐':pct>=90?'⭐⭐⭐⭐':'⭐⭐⭐'}</div>`; let html=''; teams.forEach((t,i)=>{let m=TEAM_META[i]; html+=`<div class="team"><h3>${m[1]} Time ${m[0]} ${i<2?'— começa jogando':'— próximo'}</h3><ul>${t.map(p=>`<li>${p.nome} <small>(nível ${p.nivel})</small></li>`).join('')}</ul><div class="sum">Soma ${sum(t)} • Média ${avg(t).toFixed(1)}</div></div>`}); const goleiros=players.filter(p=>p.presente&&(p.status||'ativo')==='ativo'&&(p.posicao||'linha')==='goleiro'); if(goleiros.length){html+=`<div class="team goalkeepers"><h3>🥅 Goleiros da rodada</h3><ul>${goleiros.map(p=>`<li>${p.nome}</li>`).join('')}</ul><div class="sum">Não participam do sorteio dos times.</div></div>`;} $('teams').innerHTML=html; $('teamsText').value=teamsMessage(pct)}
+function teamsMessage(pct){const goleiros=players.filter(p=>p.presente&&(p.status||'ativo')==='ativo'&&(p.posicao||'linha')==='goleiro'); const linha=players.filter(p=>p.presente&&(p.status||'ativo')==='ativo'&&(p.posicao||'linha')!=='goleiro'); let lines=[`⚽ *Sub Óbito Anhanguera* 🦉`,`📅 Times da rodada`,`⚽ Jogadores de linha: ${linha.length}`,`🥅 Goleiros: ${goleiros.length}`,`📊 Equilíbrio: ${pct}%`,``]; teams.forEach((t,i)=>{let m=TEAM_META[i]; lines.push(`${m[1]} *TIME ${m[0].toUpperCase()}* ${i<2?'— começa jogando':'— próximo'}`); t.forEach(p=>lines.push(`- ${p.nome}`)); lines.push('')}); if(goleiros.length){lines.push('🥅 *GOLEIROS*'); goleiros.forEach(p=>lines.push(`- ${p.nome}`)); lines.push('');} lines.push('⚽ Primeiro jogo: 🟦 Azul x 🟥 Vermelho'); lines.push('Boa resenha e sem choro! 😂'); return lines.join('\n')}
 function renderFinance(){let mensal=players.filter(p=>(p.tipo||'').toLowerCase().includes('mensal')).length; let avulsoPresentes=players.filter(p=>(p.tipo||'').toLowerCase().includes('avul')&&p.presente).length; let previsto=mensal*65+avulsoPresentes*20; $('financeTotal').textContent=`R$ ${previsto.toFixed(2).replace('.',',')}`; $('financeSummary').innerHTML=`<div class="finance"><b>Resumo estimado</b><p>Mensalistas cadastrados: ${mensal}</p><p>Avulsos presentes hoje: ${avulsoPresentes}</p><p>Receita referência: R$ ${previsto.toFixed(2).replace('.',',')}</p><p class="muted">Controle detalhado de pago/pendente entra na próxima build.</p></div>`}
 async function copy(txt){try{ if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(txt);alert('Copiado!');return} const ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); alert('Copiado!'); }catch(e){alert('Não foi possível copiar automaticamente. Selecione o texto e copie manualmente.')}}
 function escapeHtml(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}

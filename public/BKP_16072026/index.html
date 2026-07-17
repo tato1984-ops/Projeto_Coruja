@@ -8,33 +8,14 @@
 </head>
 <body>
 <div class="app">
-<header class="appHeader">
-  <div class="brandBlock">
-    <div class="brandMark" aria-hidden="true">🦉⚽</div>
-    <div>
-      <span class="brandKicker">GESTÃO FUTEBOL</span>
-      <h1>Sub Óbito Anhanguera</h1>
-      <p>Organização da rodada, sorteio e financeiro.</p>
-    </div>
-  </div>
-  <div class="headerActions">
-    <span class="versionBadge">v0.3.3.1</span>
-    <button id="resetBtn" class="ghost">Reset local</button>
-  </div>
-</header>
-<nav aria-label="Navegação principal">
-  <button data-tab="rodada" class="active"><span>🏠</span>Rodada</button>
-  <button data-tab="chegadas"><span>✅</span>Chegadas</button>
-  <button data-tab="sorteio"><span>🎲</span>Sorteio</button>
-  <button data-tab="jogadores"><span>👥</span>Jogadores</button>
-  <button data-tab="financeiro"><span>💰</span>Financeiro</button>
-</nav>
+<header><div><h1>⚽ Gestão Futebol</h1><p>Sub Óbito Anhanguera • Projeto Coruja • Build 003.2</p></div><button id="resetBtn" class="ghost">Reset local</button></header>
+<nav><button data-tab="rodada" class="active">Rodada</button><button data-tab="chegadas">Chegadas</button><button data-tab="sorteio">Sorteio</button><button data-tab="jogadores">Jogadores</button><button data-tab="financeiro">Financeiro</button></nav>
 <main>
 <section id="rodada" class="tab active">
 <div class="dashboardHero">
   <div>
     <span class="eyebrow">PAINEL DA RODADA</span>
-    <h2>Visão geral</h2>
+    <h2>Dashboard Inteligente</h2>
     <p id="dashDate" class="dashDate"></p>
   </div>
   <div id="dashConnection" class="connectionBadge">
@@ -81,14 +62,13 @@
   <button id="copyInvite">📲 Copiar convite WhatsApp</button>
   <button id="goChegadas">✅ Confirmar chegadas</button>
   <button id="drawFromHome">🎲 Gerar times</button>
-  <button id="endRoundBtn" class="danger">🏁 Encerrar rodada</button>
 </div>
 <textarea id="inviteText" readonly></textarea>
 <div class="note">O sorteio considera somente jogadores marcados como <b>presente no local</b>. Quem chegar após o sorteio fica registrado como atraso.</div>
 </section>
 <section id="chegadas" class="tab"><h2>Chegadas / Presença no Local</h2><div class="toolbar"><input id="search" placeholder="Buscar jogador..."><button id="markLate">Marcar atraso após sorteio</button></div><div id="playersList"></div></section>
 <section id="sorteio" class="tab"><h2>Sorteio Inteligente</h2><div class="drawPanel"><b id="drawCount">0</b> presentes • Sorteio apenas com jogadores de linha • Times de até 6<button id="drawBtn">🎲 Gerar Times</button><button id="copyTeams" class="secondary">📋 Copiar mensagem dos times</button></div><div id="balance"></div><div id="teams"></div><textarea id="teamsText" readonly></textarea></section>
-<section id="jogadores" class="tab"><h2>Jogadores</h2><p class="muted">Cadastre, edite e defina quem joga na linha ou no gol.</p><div class="toolbar"><input id="playerName" placeholder="Nome do jogador"><select id="playerType"><option>Mensalista</option><option>Avulso</option></select><select id="playerPosition"><option value="linha">⚽ Linha</option><option value="goleiro">🥅 Goleiro</option></select><input id="playerLevel" type="number" min="1" max="10" value="5" placeholder="Nível"><input id="playerPhone" placeholder="Telefone"><button id="addPlayer">➕ Adicionar</button></div><div class="toolbar"><button id="migratePlayers">☁️ Migrar base inicial para Firestore</button><span id="syncStatus" class="muted">Conectando...</span></div><div id="playersTable"></div></section>
+<section id="jogadores" class="tab"><h2>Jogadores</h2><p class="muted">Build 003.1: jogadores de linha e goleiros separados no sorteio.</p><div class="toolbar"><input id="playerName" placeholder="Nome do jogador"><select id="playerType"><option>Mensalista</option><option>Avulso</option></select><select id="playerPosition"><option value="linha">⚽ Linha</option><option value="goleiro">🥅 Goleiro</option></select><input id="playerLevel" type="number" min="1" max="10" value="5" placeholder="Nível"><input id="playerPhone" placeholder="Telefone"><button id="addPlayer">➕ Adicionar</button></div><div class="toolbar"><button id="migratePlayers">☁️ Migrar base inicial para Firestore</button><span id="syncStatus" class="muted">Conectando...</span></div><div id="playersTable"></div></section>
 <section id="financeiro" class="tab">
 <h2>💰 Caixa do Sub Óbito</h2>
 <p class="muted">Controle mensal de receitas, locação do espaço e despesas variáveis.</p>
@@ -152,12 +132,7 @@
   <div id="financeSummary" hidden></div>
 </div>
 </section>
-</main>
-<footer class="appFooter">
-  <span>🦉 Projeto Coruja</span>
-  <span>Build 003.3.1 • Encerramento da Rodada</span>
-</footer>
-</div>
-<script type="module" src="app.js?v=build003-3-1-encerramento-rodada"></script>
+</main></div>
+<script type="module" src="app.js?v=build003-2-rodada-inteligente"></script>
 <script type="module" src="finance.js?v=dev-isentos-002"></script>
 </body></html>

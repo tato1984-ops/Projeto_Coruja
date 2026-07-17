@@ -133,12 +133,3 @@ textarea{line-height:1.45;resize:vertical}
  .hero,.metricCard,.summaryPanel,.financePanel,.team,.player,.drawPanel{border-radius:18px}
  .appFooter{flex-direction:column;align-items:flex-start}
 }
-
-
-button.danger{
-  background:#8f1d2c;
-  border-color:#8f1d2c;
-  color:#fff;
-}
-button.danger:hover{filter:brightness(1.06)}
-button:disabled{opacity:.65;cursor:wait}
